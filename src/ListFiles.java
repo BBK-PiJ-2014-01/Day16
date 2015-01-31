@@ -1,11 +1,11 @@
-import java.io.*;
+import java.io.File;
 
 /**
  * Created by Pierre on 31/01/2015.
  */
-public class ls {
+public class ListFiles {
     public static void main(String[] args) {
-        ls programme = new ls();
+        ListFiles programme = new ListFiles();
         programme.launch();
     }
 
