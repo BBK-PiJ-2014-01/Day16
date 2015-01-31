@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 
 /**
  * Created by Pierre on 31/01/2015.
@@ -13,15 +10,16 @@ public class ls {
     }
 
     public void launch() {
-        String filename = ".";
-        File file = new File(filename);
-        BufferedReader in = null;
-        try {
-            in = new BufferedReader(new FileReader(file));
-        } catch(FileNotFoundException ex) {
-            System.out.println("File does not exist");
+        String directoryName = ".";
+        File file = new File(directoryName);
+        File[] list = file.listFiles();
+        int i = 0;
+        while (i < list.length) {
+            if (list[i].isDirectory())
+                System.out.println("Directory: " + list[i].getAbsolutePath());
+            if (list[i].isFile())
+                System.out.println("File: " + list[i].getName());
+            i++;
         }
-        System.out.println(file.list());
-        in.close;
     }
 }
