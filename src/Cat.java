@@ -10,24 +10,31 @@ public class Cat {
     }
 
     public void launch(String[] args) {
-        String fileName = "";
-        BufferedReader in = null;
-        try {
-            if (args.length == 0)
-                throw new IndexOutOfBoundsException();
-            fileName += args[0];
-            File file = new File(fileName);
-            in = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = in.readLine()) != null) {
-                System.out.println(line);
+        if (args.length == 0) {
+            System.out.println("No argument found");
+        } else {
+            String fileName = "";
+            BufferedReader in = null;
+            int i = 0;
+            while (i < args.length) {
+                try {
+                    fileName = args[i];
+                    File file = new File(fileName);
+                    in = new BufferedReader(new FileReader(file));
+                    String line;
+                    while ((line = in.readLine()) != null) {
+                        System.out.println(line);
+                    }
+                    System.out.println("\n");
+                } catch (FileNotFoundException ex) {
+                    System.out.println("File " + args[0] + " not found");
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } finally {
+                    closeReader(in);
+                }
+                i++;
             }
-        } catch(FileNotFoundException ex) {
-            System.out.println("File "+args[0]+" not found");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } finally {
-            closeReader(in);
         }
     }
 
