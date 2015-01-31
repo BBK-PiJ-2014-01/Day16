@@ -13,6 +13,8 @@ public class Mkdir {
         boolean success = false;
         String directoryName = "./";
         try {
+            if (args.length != 1)
+                throw new IndexOutOfBoundsException();
             directoryName += args[0];
             File file = new File(directoryName);
             success = file.mkdir();
