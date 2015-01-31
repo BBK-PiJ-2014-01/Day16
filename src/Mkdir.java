@@ -1,3 +1,5 @@
+import java.io.File;
+
 /**
  * Created by Pierre on 31/01/2015.
  */
@@ -8,6 +10,19 @@ public class Mkdir {
     }
 
     public void launch(String[] args) {
-        System.out.println(args[0]);
+        boolean success = false;
+        String directoryName = "./";
+        try {
+            directoryName += args[0];
+            File file = new File(directoryName);
+            success = file.mkdir();
+            if (success)
+                System.out.println("Directory created");
+            else
+                System.out.println("Directory not created");
+        } catch(IndexOutOfBoundsException ex) {
+            System.out.println("Input problem!");
+        }
+
     }
 }
