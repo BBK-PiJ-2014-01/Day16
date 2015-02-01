@@ -10,8 +10,8 @@ public class Cat {
     }
 
     public void launch(String[] args) {
-        if (args.length == 0) {
-            System.out.println("No argument found");
+        if ((args.length == 0)||(args.length>2)) {
+            System.out.println("Wrong number of arguments found");
         } else {
             String fileName = "";
             BufferedReader in = null;
