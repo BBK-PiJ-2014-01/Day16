@@ -8,6 +8,10 @@ public class CopyFiles {
     }
 
     public void launch(String[] args) {
+        if (args.length == 0) {
+            System.out.println("No argument found");
+        } else {
 
+        }
     }
 }
